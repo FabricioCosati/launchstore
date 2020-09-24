@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+
+:root{
+    --primary-color: #fd951f;
+    --primary-color-dark: #d4760a;
+
+    --secondary-color: #3582f7;
+    --secondary-color-dark: #215db8;
+    
+    --delete-color: #e46060;
+    --delete-color-dark: #c71717;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    border: none;
+}
+
+html, body{
+    min-height: 100vh;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+
+    display: flex;
+    flex-direction: column; 
+}
+
+.container{
+    width: 90%;
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+footer{
+    margin-top: auto;
+}
+
+.button{
+    background-color: var(--primary-color);
+    color: white;
+
+    display: block;
+    margin: 1rem 0;
+    padding: 0.8rem 1rem;
+
+    width: 100%;
+    border-radius: 4px;
+
+    /* para colocar o botão para baixo */
+
+    align-self: end;
+
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 1rem;
+    text-align: center;
+    
+    cursor: pointer;
+
+    transition: all .2s;
+}
+
+.button:hover{
+    background-color: var(--primary-color-dark);
+}
+
+.button.edit{
+    background-color: var(--secondary-color);
+}
+
+.button.edit:hover{
+    background-color: var(--secondary-color-dark);
+}
+
+.button.delete{
+    background-color: lightgray;
+}
+
+.button.delete:hover{
+    background-color: var(--delete-color-dark);
+}
+
+/* header */
+
+header, footer{
+    background-color: black;
+    color: white;
+    
+    width: 100%;
+    padding: 2rem 0;
+
+    text-align: center;
+}
+
+header div.container{
+    display: grid;
+    grid-template-columns: 220px auto 280px;
+    align-items: center;
+    gap: 24px;
+}
+
+header div.container a{
+    justify-self: start;
+}
+
+/* Logo */
+
+.logo h1{
+    color: white;
+    font-size: 2.25rem;
+    line-height: 2.8rem;
+}
+
+.logo h2{
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    line-height: 0.85rem;
+    letter-spacing: 0.2rem;
+}
+
+/* header search */
+
+.search input{
+    width: 100%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+}
+
+/* primary menu */
+
+nav.primary ul{
+    display: flex;
+    justify-content: space-between;
+}
+
+nav.primary ul li a{
+    display: flex;
+    align-items: center;
+    
+    color: white;
+
+    transition: color .2s;
+}
+
+nav.primary ul li a:hover{
+    color: var(--primary-color);
+}
+
+nav.primary ul li a i{
+    margin-right: 0.5rem;
+
+}
