@@ -17,6 +17,11 @@ CREATE TABLE "categories" (
   "name" text NOT NULL
 );
 
+INSERT INTO categories(name) VALUES ('Eletrônicos')
+INSERT INTO categories(name) VALUES ('Comida')
+INSERT INTO categories(name) VALUES ('Saúde')
+INSERT INTO categories(name) VALUES ('Automóveis')
+
 CREATE TABLE "files" (
   "id" SERIAL PRIMARY KEY,
   "name" text,
@@ -27,3 +32,43 @@ CREATE TABLE "files" (
 ALTER TABLE "products" ADD FOREIGN KEY ("category_id") REFERENCES "categories" ("id");
 
 ALTER TABLE "files" ADD FOREIGN KEY ("products_id") REFERENCES "products" ("id");
+
+CREATE TABLE "users" (
+  "id" SERIAL PRIMARY KEY,
+  "name" text NOT NULL,
+  "email" text UNIQUE NOT NULL,
+  "password" text NOT NULL,
+  "cpf_cnpj" text UNIQUE NOT NULL,
+  "cep" text,
+  "address" text,
+  "created_at" timestamp DEFAULT (now()),
+  "updated_at" timestamp DEFAULT (now())
+);
+
+-- foreign key
+
+ALTER TABLE "products" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
+
+-- create procedure
+
+CREATE FUNCTION trigger_set_timestamp()
+RETURNS TRIGGER AS $$
+  BEGIN
+    NEW.updated_at = NOW();
+    RETURN NEW;
+  END;
+$$ LANGUAGE plpgsql;
+
+-- auto updated_at products
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON products
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
+
+-- auto updated_at users
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON users
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();

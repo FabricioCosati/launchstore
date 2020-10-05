@@ -6,10 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="/style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+        {% block styles %}
         <link rel="stylesheet" href="/index.css">
-        <link rel="stylesheet" href="/fields.css">
+        <link rel="stylesheet" href="/pageLanding.css">
         <link rel="stylesheet" href="/show.css">
+        <link rel="stylesheet" href="/styles/messages.css">
+        {% endblock %}
 
         {% block head %}
             <title>Launchstore</title> 
@@ -17,6 +21,8 @@
     
     </head>
     <body>
+
+    {% include "parts/messages.njk" %}
 
     {% include "parts/header.njk" %}
 
